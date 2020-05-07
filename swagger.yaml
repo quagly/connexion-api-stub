@@ -9,15 +9,13 @@ consumes:
 produces:
   - application/json
 paths:
+
   /string-length:
     get:
       operationId: api.string_length
       summary: how long is a string?
       parameters:
-        - name: body
-          in: query
-          type: string
-          required: true
+        - $ref: '#/parameters/body'
       responses:
         200:
           description: Successful response.
@@ -28,15 +26,13 @@ paths:
                 type: integer
                 example: 10
                 description: character count
+
   /string-info:
     get:
       operationId: api.string_info
       summary: what about a string? defaults to length.
       parameters:
-        - name: body
-          in: query
-          type: string
-          required: true
+        - $ref: '#/parameters/body'
         - name: include_whitespace
           in: query
           type: boolean
@@ -59,3 +55,13 @@ paths:
                 type: string
                 example: "a string"
                 description: string that is measured
+
+parameters:
+# not very useful.  This is for passing data objects around
+# will I ever resuse this?  Well, just an example of format
+# I reuse body so give it a try
+  body:
+    name: body
+    in: query
+    type: string
+    required: true
