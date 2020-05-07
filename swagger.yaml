@@ -1,18 +1,18 @@
 # `swagger.yaml` file contents
 swagger: '2.0'
 info:
-  title: semantic-clustering
-  version: "0.1"
-  description: provides semantic clustering for text
+  title: connextion api stub
+  version: "0.2"
+  description: simple example of connextion
 consumes:
   - application/json
 produces:
   - application/json
 paths:
-  /semantic:
+  /string-length:
     get:
-      operationId: api.semantic_cluster
-      summary: provides semantic clustering.
+      operationId: api.string_length
+      summary: how long is a string?
       parameters:
         - name: body
           in: query
@@ -28,3 +28,34 @@ paths:
                 type: integer
                 example: 10
                 description: character count
+  /string-info:
+    get:
+      operationId: api.string_info
+      summary: what about a string? defaults to length.
+      parameters:
+        - name: body
+          in: query
+          type: string
+          required: true
+        - name: include_whitespace
+          in: query
+          type: boolean
+          required: false
+      responses:
+        200:
+          description: Successful response.
+          schema:
+            type: object
+            properties:
+              length:
+                type: integer
+                example: 10
+                description: length of string
+              include_whitespace:
+                type: boolean
+                example: true
+                description: include whitespace or not
+              body:
+                type: string
+                example: "a string"
+                description: string that is measured
