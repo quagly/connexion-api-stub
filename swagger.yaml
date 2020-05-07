@@ -1,0 +1,30 @@
+# `swagger.yaml` file contents
+swagger: '2.0'
+info:
+  title: semantic-clustering
+  version: "0.1"
+  description: provides semantic clustering for text
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /semantic:
+    get:
+      operationId: api.semantic_cluster
+      summary: provides semantic clustering.
+      parameters:
+        - name: body
+          in: query
+          type: string
+          required: true
+      responses:
+        200:
+          description: Successful response.
+          schema:
+            type: object
+            properties:
+              length:
+                type: integer
+                example: 10
+                description: character count
