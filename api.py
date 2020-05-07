@@ -1,3 +1,3 @@
 # `api.py` file contents
-def semantic_cluster(body):
+def string_length(body):
     return {"length": len(body)}, 200
