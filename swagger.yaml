@@ -37,6 +37,7 @@ paths:
           in: query
           type: boolean
           required: false
+          default: true
       responses:
         200:
           description: Successful response.
@@ -65,3 +66,4 @@ parameters:
     in: query
     type: string
     required: true
+    description: string to evaluate
