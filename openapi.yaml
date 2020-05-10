@@ -1,0 +1,86 @@
+openapi: 3.0.1
+info:
+  title: connextion api stub
+  description: simple example of connextion
+  version: "0.4"
+servers:
+- url: /
+paths:
+  /string-length:
+    get:
+      summary: how long is a string?
+      operationId: api.string_length
+      parameters:
+      - name: body
+        in: query
+        description: string to evaluate
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  length:
+                    type: integer
+                    description: character count
+                    example: 10
+  /string-info:
+    get:
+      summary: what about a string? defaults to length.
+      operationId: api.string_info
+      parameters:
+      - name: body
+        in: query
+        description: string to evaluate
+        required: true
+        schema:
+          type: string
+      - name: include_whitespace
+        in: query
+        schema:
+          type: boolean
+          default: true
+      responses:
+        200:
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  length:
+                    type: integer
+                    description: length of string
+                    example: 10
+                  include_whitespace:
+                    type: boolean
+                    description: include whitespace or not
+                    example: true
+                  body:
+                    type: string
+                    description: string that is measured
+                    example: a string
+  /get-dict:
+    get:
+      summary: show how to return associative array
+      operationId: api.get_dict
+      responses:
+        200:
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  maximum: 1
+                  minimum: 0
+                  type: number
+                  format: double
+                example:
+                  home: 0.0037428185399140637
+                  government: 0.002829530081728651
