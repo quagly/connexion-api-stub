@@ -2,7 +2,7 @@
 swagger: '2.0'
 info:
   title: connextion api stub
-  version: "0.2"
+  version: "0.3"
   description: simple example of connextion
 consumes:
   - application/json
@@ -56,6 +56,25 @@ paths:
                 type: string
                 example: "a string"
                 description: string that is measured
+
+  /get-dict:
+    get:
+      operationId: api.get_dict
+      summary: show how to return associative array
+      responses:
+        200:
+          description: Successful response.
+          schema:
+            type: object
+            additionalProperties:
+              type: number
+              format: double
+              minimum: 0
+              maximum: 1
+            example:
+              home: 0.0037428185399140637
+              government: 0.002829530081728651
+
 
 parameters:
 # not very useful.  This is for passing data objects around
